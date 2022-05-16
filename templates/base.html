@@ -1,0 +1,70 @@
+<!doctype html>
+    <head>
+        <meta charset="utf-8">
+            <script type="text/javascript"
+                    src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js">
+                        </script>
+                            <script type="text/javascript"
+                                    src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython_stdlib.js">
+                                        </script>
+                                        </head>
+
+					<title>askMartyn text channel</title>
+                                        <body onload="brython()">
+						<link class='styleshits' rel="stylesheet" href="/get-files/style{{style_sheet_number}}.css">
+<script type="text/python">
+from browser import document, ajax, html, timer, window
+TABLE = html.TABLE(**{
+    "id":"main"
+})
+document <= TABLE
+
+global COMMENTS
+COMMENTS = []
+global HEIGHT
+HEIGHT = 10000000000000000000000000
+TIMEOUT = 200
+
+def add_comment(user):
+    COMMENTS.append(user)
+    print(user)
+    print('not in Comments')
+    if 'askmar1Lookballs' in user["comment"]:
+       TABLE <= html.IMG(src="https://static-cdn.jtvnw.net/emoticons/v2/308116045/default/dark/1.0",
+       **{"class": "text"})
+       
+    table_rows = html.TABLE(
+       html.TR(
+          html.TD(user[key], **{"class": key} ) for key in ["username","comment"]
+          ),
+          **{"class": "text", "id":"main"}
+          )
+          
+    TABLE <= table_rows
+    """
+    if len(COMMENTS) > 16:
+       print(COMMENTS.pop(0))
+       print('removed')
+    """
+
+def read(req):
+    user_comments = req.json
+    for user in user_comments:
+       if user not in COMMENTS:
+          add_comment(user)
+    scroll()
+          
+def scroll():
+   window.scroll({"top": str(HEIGHT), "behaviour":"smooth"})
+
+def wait():
+   timer.set_timeout(request, TIMEOUT)
+
+
+def request():
+   ajax.get("users", oncomplete=read)
+   timer.set_timeout(wait, TIMEOUT)
+
+request()
+</script>
+</body></html>
