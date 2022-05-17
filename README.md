@@ -1,2 +1,2 @@
 # web_chat
-Flask app for displaying comments on stream
+Flask app for displaying comments on stream and bounce around
