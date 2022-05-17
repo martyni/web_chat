@@ -2,8 +2,7 @@ from flask import Flask, request, send_from_directory, jsonify, render_template
 import json
 import os
 import requests
-STYLE_SHEET_NUMBER='16'
-USERS_ENDPOINT="http://localhost:5000/users"
+from vars import STYLE_SHEET_NUMBER
 app = Flask(__name__)
 
 @app.route("/")
