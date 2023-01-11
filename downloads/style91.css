@@ -16,8 +16,53 @@ span {
 }
 
 #main {
-  width:100%;
+  border-style: ridge;
+  border-width: thick;
+  z-index: 1;
 }
+
+#menu {
+  z-index: 2;
+  text-align: center;
+  position:fixed !important;
+  position: absolute; 
+  top: 0;
+  width: 98%;
+  background: rgb(37,216,218);
+  background: radial-gradient(
+        circle,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );
+  text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
+  border-style: ridge;
+  border-width: thick;
+  scrollbar-width: thick;
+  scrollbar-color: radial-gradient(circle, rgba(37,216,218,1) 0%, rgba(16,103,105,1) 100%);
+}
+
+
+.menu-item {
+  display: inline;
+  border-style: ridge;
+  border-width: thick;
+  color: rgb(200, 200, 200);
+  background: rgb(100,100,100);
+  float:right;
+  width: 5%;
+
+}
+
+
 
 .comment0 {
  animation-name: bounce;
@@ -61,6 +106,7 @@ span {
 
 body {
   background-color: black;
+  margin: 0px;
 
 }
   

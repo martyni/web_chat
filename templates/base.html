@@ -14,10 +14,40 @@
 						<link class='styleshits' rel="stylesheet" href="/get-files/style{{style_sheet_number}}.css">
 <script type="text/python">
 from browser import document, ajax, html, timer, window
+
+MENU = html.DIV('askMartyn_chat.exe', **{
+    "id":"menu",
+    "class": "text"
+})
+
 TABLE = html.TABLE(**{
     "id":"main"
 })
+
+LINE = html.DIV('_', **{
+    "id":"line",
+    "class": "menu-item"
+})
+
+CIRCLE = html.DIV('O', **{
+    "id":"circle",
+    "class": "menu-item"
+})
+
+EX = html.DIV('X', **{
+    "id":"x",
+    "class": "menu-item"
+})
+
+
+for item in (EX, CIRCLE, LINE):
+   MENU <= item
+
+document <= MENU
 document <= TABLE
+
+print(document["main"].attrs)
+#document["menu"].attrs['width'] = WIDTH
 
 global COMMENTS
 COMMENTS = []
