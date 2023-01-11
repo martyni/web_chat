@@ -14,9 +14,16 @@
 						<link class='styleshits' rel="stylesheet" href="/get-files/style{{style_sheet_number}}.css">
 <script type="text/python">
 from browser import document, ajax, html, timer, window
+
+MENU = html.DIV('askMartyn_chat.exe', **{
+    "id":"menu"
+})
+
 TABLE = html.TABLE(**{
     "id":"main"
 })
+
+document <= MENU
 document <= TABLE
 
 global COMMENTS

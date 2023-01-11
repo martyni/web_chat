@@ -17,7 +17,17 @@ span {
 
 #main {
   width:100%;
+  border-style: ridge;
+  border-width: thick;
 }
+
+#menu {
+    position:fixed !important;
+    position: absolute; 
+    top: 0;
+    width: 100%
+}
+
 
 .comment0 {
  animation-name: bounce;
