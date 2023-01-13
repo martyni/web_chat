@@ -43,7 +43,7 @@ span {
         rgba(251, 7, 217, 1) 90%,
         rgba(255, 0, 0, 1) 100%
     );
-  text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
+  text-shadow: -2px -2px 0 #333, 2px -2px 0 #333, -2px 2px 0 #333, 2px 2px 0 #333;
   border-style: ridge;
   border-width: thick;
   scrollbar-width: thick;
