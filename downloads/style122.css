@@ -12,7 +12,7 @@ span {
   color:yellow;
   vertical-align: 0px;
   width:30%;	
-  margin-right:13%;
+  margin-right:6%;
 }
 
 #main {
@@ -93,15 +93,13 @@ span {
 
 .emoji {
  color: white;
- padding-top:25px;	
- padding-bottom:25px;	
- padding-left:20px;	
  animation-name: stretch;
  animation-duration: 1.5s;
  animation-timing-function: ease-out;
  animation-direction: alternate;
  animation-iteration-count: infinite;
  animation-play-state: running;
+ height: 40px;
 }
 
 body {

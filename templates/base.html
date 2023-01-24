@@ -1,3 +1,4 @@
+
 <!doctype html>
     <head>
         <meta charset="utf-8">
@@ -68,26 +69,33 @@ ASKMARTYN_EMOJI_DICT= {
 
 def add_comment(user):
     COMMENTS.append(user)
-    print(user)
-    print('not in Comments')
     user_comment = str(user["comment"])
+    emoji_list = []
     for emoji in ASKMARTYN_EMOJI_DICT:
-       if emoji in user["comment"]:
-          TABLE <= html.IMG(src=ASKMARTYN_EMOJI_DICT[emoji],
-                   **{"class": "emoji comment"})
-       user_comment = user_comment.replace(emoji, '^^')
-    comment = [html.SPAN(character , **{"class": "comment{} text".format(user_comment.index(character) % 3)}) for character in user_comment]
+       while user_comment.find(emoji) != -1:
+          user_comment = user_comment.replace(emoji, '^', 1)
+          emoji_list.append(html.IMG(src=ASKMARTYN_EMOJI_DICT[emoji], **{"class": "emoji comment"}))
+    #comment = [html.SPAN(character , **{"class": "comment{} text".format(user_comment.index(character) % 3)}) for character in user_comment]
+    comment = create_comment(user_comment, emoji_list)
+    print(comment)
     table_row = html.TR([
           html.TD(user["username"], **{"class": "username text"} ),
 	  comment
 	  ], **{"class":"comment_row"})
-          
+
     TABLE <= table_row
-    """
-    if len(COMMENTS) > 16:
-       print(COMMENTS.pop(0))
-       print('removed')
-    """
+
+def create_comment(user_comment, emoji_list):
+    comment = []
+    for character in user_comment:
+       if character is not "^":
+          comment.append(html.SPAN(character , **{"class": "comment{} text".format(user_comment.index(character) % 3)}))
+       else:
+	  try:
+	     comment.append(emoji_list.pop(0))
+	  except:
+             comment.append(html.SPAN("^" , **{"class": "comment{} text".format(user_comment.index(character) % 3)}))
+    return comment
 
 def read(req):
     user_comments = req.json
@@ -95,7 +103,7 @@ def read(req):
        if user not in COMMENTS:
           add_comment(user)
     scroll()
-          
+
 def scroll():
    window.scroll({"top": str(HEIGHT), "behaviour":"smooth"})
 
