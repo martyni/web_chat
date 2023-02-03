@@ -1,0 +1,143 @@
+
+.text {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: white;
+  display: inline-block;
+  font-size: 200%;
+}
+span {
+  white-space:pre;
+}
+.username {
+  color:yellow;
+  vertical-align: 0px;
+  width:30%;	
+  margin-right:6%;
+}
+
+#main {
+  border-style: ridge;
+  border-width: thick;
+  z-index: 1;
+}
+
+#menu {
+  z-index: 2;
+  text-align: center;
+  position:fixed !important;
+  position: absolute; 
+  top: 0;
+  width: 98%;
+  background: radial-gradient(
+        circle,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  text-shadow: -2px -2px 0 #333, 2px -2px 0 #333, -2px 2px 0 #333, 2px 2px 0 #333;
+  border-style: ridge;
+  border-width: thick;
+  scrollbar-width: thick;
+  scrollbar-color: radial-gradient(circle, rgba(37,216,218,1) 0%, rgba(16,103,105,1) 100%);
+  animation-name: rainbow;
+  animation-play-state: running;
+}
+
+
+
+.menu-item {
+  display: inline;
+  border-style: ridge;
+  border-width: thick;
+  color: rgb(200, 200, 200);
+  background: rgb(100,100,100);
+  float:right;
+  width: 5%;
+
+}
+
+.comment0 {
+ animation-name: bounce;
+ animation-duration: 0.5s;
+ animation-timing-function: ease-out;
+ animation-direction: alternate;
+ animation-iteration-count: infinite;
+ animation-play-state: running;
+}
+
+.comment1 {
+ animation-name: bounce;
+ animation-duration: 0.75s;
+ animation-timing-function: ease-out;
+ animation-direction: alternate;
+ animation-iteration-count: infinite;
+ animation-play-state: running;
+}
+
+.comment2 {
+ animation-name: bounce;
+ animation-duration: 1.0s;
+ animation-timing-function: ease-out;
+ animation-direction: alternate;
+ animation-iteration-count: infinite;
+ animation-play-state: running;
+}
+
+.emoji {
+ color: white;
+ animation-name: stretch;
+ animation-duration: 1.5s;
+ animation-timing-function: ease-out;
+ animation-direction: alternate;
+ animation-iteration-count: infinite;
+ animation-play-state: running;
+ height: 40px;
+}
+
+body {
+  background-color: black;
+  margin: 0px;
+
+}
+  
+@keyframes stretch {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1.8);
+    }
+}
+
+@keyframes bounce {
+ 0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    40% {
+        -webkit-transform: translateY(7%);
+        transform: translateY(7%);
+    }
+
+    60% {
+        -webkit-transform: translateY(4%);
+        transform: translateY(4%);
+    }
+}
+
+@keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
