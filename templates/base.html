@@ -81,7 +81,7 @@ def add_comment(user):
     print(comment)
     table_row = html.TR([
           html.TD(user["username"], **{"class": "username text"} ),
-	  comment
+	  html.TD(comment)
 	  ], **{"class":"comment_row"})
 
     TABLE <= table_row
