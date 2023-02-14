@@ -81,7 +81,6 @@ def udpate_emotes(req):
 
 
 def add_comment(user):
-    get_emotes()
     COMMENTS.append(user)
     user_comment = str(user["comment"])
     for emoji in ASKMARTYN_EMOJI_DICT:
