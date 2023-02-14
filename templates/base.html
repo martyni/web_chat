@@ -83,6 +83,7 @@ def udpate_emotes(req):
 def add_comment(user):
     COMMENTS.append(user)
     user_comment = str(user["comment"])
+    emoji_list = []
     for emoji in ASKMARTYN_EMOJI_DICT:
        while user_comment.find(emoji) != -1:
           user_comment = user_comment.replace(emoji, '^', 1)
