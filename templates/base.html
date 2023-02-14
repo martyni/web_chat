@@ -67,11 +67,23 @@ ASKMARTYN_EMOJI_DICT= {
 "askmar1Tooloud"	: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_f88f0d72c76e44508172ded00240cec0/static/light/3.0",
 "askmar1Techissues"	: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_640f73e178e5401aacc1512710111409/animated/light/3.0"
 }
+EMOTES = []
+
+def get_emotes():
+    ajax.get("http://emote.askmartyn:5000/emotes", oncomplete=process_emotes)
+
+def udpate_emotes(req):
+    global EMOTES
+    EMOTES = req.json.get("Response")
+    print(EMOTES)
+
+    
+
 
 def add_comment(user):
+    get_emotes()
     COMMENTS.append(user)
     user_comment = str(user["comment"])
-    emoji_list = []
     for emoji in ASKMARTYN_EMOJI_DICT:
        while user_comment.find(emoji) != -1:
           user_comment = user_comment.replace(emoji, '^', 1)
