@@ -67,29 +67,33 @@ ASKMARTYN_EMOJI_DICT= {
 "askmar1Tooloud"	: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_f88f0d72c76e44508172ded00240cec0/static/light/3.0",
 "askmar1Techissues"	: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_640f73e178e5401aacc1512710111409/animated/light/3.0"
 }
-EMOTES = []
 
 def get_emotes():
-    ajax.get("http://emote.askmartyn:5000/emotes", oncomplete=process_emotes)
+    ajax.get("http://emote.askmartyn:5000/emotes", oncomplete=update_emotes)
 
-def udpate_emotes(req):
-    global EMOTES
-    EMOTES = req.json.get("Response")
-    print(EMOTES)
+def add_emote(req ):
+    name = str(req.json["Name"])
+    url  = str(req.json["Response"])
+    global ASKMARTYN_EMOJI_DICT
+    ASKMARTYN_EMOJI_DICT[name] = url
 
-    
+def update_emotes(req):
+    all_emotes = req.json
+    for emote in all_emotes.get('Response'):
+        url = "http://emote.askmartyn:5000/emote/{}".format(emote)
+        ajax.get("http://emote.askmartyn:5000/emote/{}".format(emote), oncomplete=add_emote)
 
-
-def add_comment(user):
+def add_comment(user, emoji_dict=ASKMARTYN_EMOJI_DICT):
     COMMENTS.append(user)
     user_comment = str(user["comment"])
-    for emoji in ASKMARTYN_EMOJI_DICT:
+    emoji_list = []
+    print(emoji_dict)
+    for emoji in emoji_dict:
        while user_comment.find(emoji) != -1:
           user_comment = user_comment.replace(emoji, '^', 1)
-          emoji_list.append(html.IMG(src=ASKMARTYN_EMOJI_DICT[emoji], **{"class": "emoji comment"}))
+          emoji_list.append(html.IMG(src=emoji_dict[emoji], **{"class": "emoji comment"}))
     #comment = [html.SPAN(character , **{"class": "comment{} text".format(user_comment.index(character) % 3)}) for character in user_comment]
     comment = create_comment(user_comment, emoji_list)
-    print(comment)
     table_row = html.TR([
           html.TD(user["username"], **{"class": "username text"} ),
 	  html.TD(comment)
@@ -120,10 +124,12 @@ def scroll():
    window.scroll({"top": str(HEIGHT), "behaviour":"smooth"})
 
 def wait():
+   get_emotes()
    timer.set_timeout(request, TIMEOUT)
 
 
 def request():
+   ajax.get("http://emote.askmartyn:5000/emotes", oncomplete=update_emotes)
    ajax.get("users", oncomplete=read)
    timer.set_timeout(wait, TIMEOUT)
 
